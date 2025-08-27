@@ -12,7 +12,6 @@ namespace ArabianCo.Domain.MaintenanceRequests;
 
 public class MaintenanceRequest : FullAuditedEntity
 {
-    [Required]
     [EmailAddress]
     [StringLength(AbpUserBase.MaxEmailAddressLength)]
     public string Email { get; set; }

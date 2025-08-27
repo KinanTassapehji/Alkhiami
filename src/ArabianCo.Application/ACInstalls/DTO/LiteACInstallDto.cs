@@ -14,7 +14,6 @@ namespace ArabianCo.ACInstalls.DTO
 		public string PhoneNumber { get; set; }
 		public string SerialNumber { get; set; }
 		public string Note { get; set; }
-		public bool IsInWarrantyPeriod { get; set; }
 		public DateTime CreationTime { get; set; }
 		public string Address { get; set; }
 		public int? CityId { get; set; }

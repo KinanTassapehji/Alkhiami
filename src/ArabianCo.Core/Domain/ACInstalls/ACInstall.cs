@@ -17,7 +17,6 @@ namespace ArabianCo.Domain.ACInstalls
 {
 	public class ACInstall:FullAuditedEntity
 	{
-		[Required]
 		[EmailAddress]
 		[StringLength(AbpUserBase.MaxEmailAddressLength)]
 		public string Email { get; set; }
@@ -32,9 +31,6 @@ namespace ArabianCo.Domain.ACInstalls
 		public string Note { get; set; }
 		public string Address { get; set; }
 		public MaintenanceRequestsStatus Status { get; set; }
-		[Required]
-		public bool IsInWarrantyPeriod { get; set; }
-
 		public int? AreaId { get; set; }
 		[ForeignKey(nameof(AreaId))]
 		public virtual Area Area { get; set; }

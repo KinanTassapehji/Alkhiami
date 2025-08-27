@@ -25,9 +25,6 @@ namespace ArabianCo.ACInstalls.DTO
 		public string ModelNumber { get; set; }
 		public string Note { get; set; }
 		public ACInstallStatus Status { get; set; }
-		[Required]
-		public bool IsInWarrantyPeriod { get; set; }
-
 		public string OtherArea { get; set; }
 		public string OtherCity { get; set; }
 		public int? AreaId { get; set; }

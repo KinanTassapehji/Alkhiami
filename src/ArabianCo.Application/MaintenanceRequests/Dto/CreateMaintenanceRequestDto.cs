@@ -10,7 +10,9 @@ namespace ArabianCo.MaintenanceRequests.Dto;
 
 public class CreateMaintenanceRequestDto : IValidatableObject, IShouldInitialize
 {
-    public string Email { get; set; }
+	[EmailAddress]
+	[StringLength(AbpUserBase.MaxEmailAddressLength)]
+	public string Email { get; set; }
     [Required]
     [StringLength(AbpUserBase.MaxNameLength)]
     public string FullName { get; set; }
