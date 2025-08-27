@@ -29,7 +29,7 @@ namespace ArabianCo.Domain.ACInstalls
 		public string PhoneNumber { get; set; }
 		public string SerialNumber { get; set; }
 		public string ModelNumber { get; set; }
-		public string Problem { get; set; }
+		public string Note { get; set; }
 		public string Address { get; set; }
 		public MaintenanceRequestsStatus Status { get; set; }
 		[Required]

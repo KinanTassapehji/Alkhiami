@@ -23,7 +23,7 @@ namespace ArabianCo.ACInstalls.DTO
 		public string PhoneNumber { get; set; }
 		public string SerialNumber { get; set; }
 		public string ModelNumber { get; set; }
-		public string Problem { get; set; }
+		public string Note { get; set; }
 		public ACInstallStatus Status { get; set; }
 		[Required]
 		public bool IsInWarrantyPeriod { get; set; }

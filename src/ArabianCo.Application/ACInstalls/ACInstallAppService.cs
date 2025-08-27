@@ -92,7 +92,7 @@ namespace ArabianCo.ACInstalls
 		{ /*"aftersales11@arabianco.com", "aftersales14@arabianco.com", "aftersales9@arabianco.com"*/ "malaz.tassapehji@gmail.com"},
 				"New Maintenance Request",
 				//$"Client Name: {input.FullName} \r\nPhone: {input.PhoneNumber}\r\nSerial Number:{input.SerialNumber}\r\nProblem: {input.Problem}\r\n At: {Clock.Now}"
-				$"Client Name: {input.FullName} \r\nPhone: {input.PhoneNumber}\r\nCity: {cityName}\r\nArea: {areaName}\r\nProblem: {input.Problem}\r\nAt: {result.CreationTime}"
+				$"Client Name: {input.FullName} \r\nPhone: {input.PhoneNumber}\r\nCity: {cityName}\r\nArea: {areaName}\r\nNote: {input.Note}\r\nAt: {result.CreationTime}"
 				);
 			}
 			catch (Exception e)

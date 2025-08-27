@@ -10,7 +10,7 @@ namespace ArabianCo.ACInstalls.Mapper
 	{
 		public ACInstallMapProfile()
 		{
-			CreateMap<ACInstallAppService, ACInstall>();
+			CreateMap<CreateACInstallDto, ACInstall>();
 			CreateMap<UpdateACInstallDto, ACInstall>();
 			CreateMap<ACInstall, LiteACInstallDto>();
 			CreateMap<ACInstall, ACInstallDto>()
