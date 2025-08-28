@@ -141,10 +141,6 @@ namespace ArabianCo.Cities
             var city = await _cityManager.GetEntityByIdAsync(input.Id);
             if (city is null)
                 throw new UserFriendlyException(string.Format(Exceptions.ObjectWasNotFound, Tokens.City));
-            if (city.Areas.Count > 0)
-            {
-                throw new UserFriendlyException(string.Format(Exceptions.ObjectCantBeDelete, Tokens.Area));
-            }
             foreach (var translation in city.Translations.ToList())
             {
                 await _cityTranslationRepository.DeleteAsync(translation);

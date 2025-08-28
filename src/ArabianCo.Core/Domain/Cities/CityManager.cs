@@ -1,7 +1,6 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
-using ArabianCo.Domain.Areas;
 using ArabianCo.Domain.Countries;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -20,7 +19,6 @@ namespace ArabianCo.Domain.Cities
         public CityManager(IRepository<City> cityRepository,
             IRepository<Country> countryRepository,
             ICountryManager countryManager,
-            IAreaManager areaManager,
             IRepository<CityTranslation> cityTranslationRepository)
         {
             _cityRepository = cityRepository;
@@ -51,7 +49,6 @@ namespace ArabianCo.Domain.Cities
             var entity = await _cityRepository.GetAll()
                 .Include(c => c.Translations)
                 .Include(c => c.Country).ThenInclude(c => c.Translations)
-                .Include(c => c.Areas).ThenInclude(c => c.Translations)
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (entity == null)
                 throw new EntityNotFoundException(typeof(City), id);

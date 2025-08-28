@@ -22,9 +22,8 @@ internal class MaintenanceRequestManger : DomainService, IMaintenanceRequestsMan
         var entity = await _repository.GetAll().Where(x=>x.Id==id)
             .Include(x=>x.Brand)
             .Include(x=>x.Category)
-            .Include(x=>x.Area).ThenInclude(x=>x.Translations)
-            .Include(x=>x.Area.City).ThenInclude(x=>x.Translations)
-            .Include(x=>x.Area.City.Country).ThenInclude(x=>x.Translations).FirstOrDefaultAsync();
+            .Include(x=>x.Address).ThenInclude(a=>a.City).ThenInclude(c=>c.Translations)
+            .Include(x=>x.Address).ThenInclude(a=>a.City).ThenInclude(c=>c.Country).ThenInclude(c=>c.Translations).FirstOrDefaultAsync();
         if (entity == null)
             throw new EntityNotFoundException(typeof(MaintenanceRequest), id);
         return entity;

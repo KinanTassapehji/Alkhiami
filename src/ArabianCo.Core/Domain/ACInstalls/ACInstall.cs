@@ -1,9 +1,8 @@
 ﻿using Abp.Authorization.Users;
 using Abp.Domain.Entities.Auditing;
-using ArabianCo.Domain.Areas;
+using ArabianCo.Domain.Addresses;
 using ArabianCo.Domain.Brands;
 using ArabianCo.Domain.Categories;
-using ArabianCo.Domain.Cities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -29,11 +28,11 @@ namespace ArabianCo.Domain.ACInstalls
 		public string SerialNumber { get; set; }
 		public string ModelNumber { get; set; }
 		public string Note { get; set; }
-		public string Address { get; set; }
-		public MaintenanceRequestsStatus Status { get; set; }
-		public int? AreaId { get; set; }
-		[ForeignKey(nameof(AreaId))]
-		public virtual Area Area { get; set; }
+                public MaintenanceRequestsStatus Status { get; set; }
+                [Required]
+                public int AddressId { get; set; }
+                [ForeignKey(nameof(AddressId))]
+                public virtual Address Address { get; set; }
 		[Required]
 		public int BrandId { get; set; }
 		[ForeignKey(nameof(BrandId))]
@@ -43,12 +42,5 @@ namespace ArabianCo.Domain.ACInstalls
 		[ForeignKey(nameof(CategoryId))]
 		public virtual Category Category { get; set; }
 
-		public string OtherArea { get; set; }
-		public string OtherCity { get; set; }
-
-		public int? CityId { get; set; }
-
-		[ForeignKey(nameof(CityId))]
-		public virtual City City { get; set; }
 	}
 }
