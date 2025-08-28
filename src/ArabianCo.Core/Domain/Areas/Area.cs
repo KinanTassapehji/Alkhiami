@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using ArabianCo.Domain.Cities;
+using ArabianCo.Domain.Streets;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -10,13 +11,16 @@ namespace ArabianCo.Domain.Areas
     {
         public Area()
         {
-            Translations = new HashSet<AreaTranslation>();
+			Streets = new HashSet<Street>();
+			Translations = new HashSet<AreaTranslation>();
         }
         public bool IsActive { get; set; }
         public int CityId { get; set; }
         [ForeignKey(nameof(CityId))]
         public virtual City City { get; set; }
-        public ICollection<AreaTranslation> Translations { get; set; }
+		public virtual ICollection<Street> Streets { get; set; }
+
+		public ICollection<AreaTranslation> Translations { get; set; }
 
     }
 }

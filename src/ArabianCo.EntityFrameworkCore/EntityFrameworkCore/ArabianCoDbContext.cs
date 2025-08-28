@@ -17,6 +17,7 @@ using ArabianCo.Domain.MaintenanceRequests;
 using ArabianCo.Domain.Questions;
 using ArabianCo.Domain.AboutUss;
 using ArabianCo.Domain.ACInstalls;
+using ArabianCo.Domain.Streets;
 
 namespace ArabianCo.EntityFrameworkCore
 {
@@ -39,6 +40,7 @@ namespace ArabianCo.EntityFrameworkCore
         public virtual DbSet<City> Cities {  get; set; }
         public virtual DbSet<CityTranslation> CityTranslations {  get; set; }
         public virtual DbSet<Area> Areas {  get; set; }
+        public virtual DbSet<Street> Streets {  get; set; }
         public virtual DbSet<AreaTranslation> AreaTranslations {  get; set; }
         public virtual DbSet<Attachment> Attachments {  get; set; }
         public virtual DbSet<Category> Categories {  get; set; }
