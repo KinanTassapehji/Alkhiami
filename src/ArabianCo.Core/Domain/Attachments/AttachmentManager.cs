@@ -130,7 +130,9 @@ internal class AttachmentManager : DomainService, IAttachmentManager
                 return ImagesAcceptedTypes;
             case AttachmentRefType.CategoryIcon:
                 return ImagesAcceptedTypes;
-        }
+            case AttachmentRefType.ACInstall:
+				return ImagesAcceptedTypes;
+		}
 
         return new AttachmentType[] { };
     }
