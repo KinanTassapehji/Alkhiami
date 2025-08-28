@@ -45,7 +45,7 @@ public class MaintenanceRequestAppService : ArabianCoAsyncCrudAppService<Mainten
 	[AbpAllowAnonymous]
         public async override Task<MaintenanceRequestDto> CreateAsync(CreateMaintenanceRequestDto input)
     {
-        input.PhoneNumber = input.PhoneNumber.Trim();
+        input.PhoneNumber = input.PhoneNumber?.Trim() ?? string.Empty;
         if (input.PhoneNumber.Length != 10)
         {
             throw new UserFriendlyException("Phone number should be 10 digits");
@@ -71,6 +71,7 @@ public class MaintenanceRequestAppService : ArabianCoAsyncCrudAppService<Mainten
 
         var entity = ObjectMapper.Map<MaintenanceRequest>(input);
         entity.AddressId = address.Id;
+        entity.Address = address;
 
         await Repository.InsertAsync(entity);
         await CurrentUnitOfWork.SaveChangesAsync();
@@ -80,9 +81,13 @@ public class MaintenanceRequestAppService : ArabianCoAsyncCrudAppService<Mainten
 
         try
         {
-            string cityName = await _cityRepository.GetAll().Include(c => c.Translations)
+            string cityName = await _cityRepository.GetAll()
+                .Include(c => c.Translations)
                 .Where(c => c.Id == input.CityId)
-                .Select(c => c.Translations.FirstOrDefault().Name)
+                .Select(c => c.Translations
+                    .OrderBy(t => t.Id)
+                    .Select(t => t.Name)
+                    .FirstOrDefault())
                 .FirstOrDefaultAsync();
 
             if (!input.Email.IsNullOrEmpty())
