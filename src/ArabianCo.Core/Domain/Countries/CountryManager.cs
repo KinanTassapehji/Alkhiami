@@ -39,8 +39,6 @@ namespace ArabianCo.Domain.Countries
             var entity = await _countryRepository.GetAll()
                 .Include(c => c.Translations)
                 .Include(c => c.Cities).ThenInclude(c => c.Translations)
-                .Include(c => c.Cities).ThenInclude(c => c.Areas)
-                .ThenInclude(c => c.Translations)
                 .FirstOrDefaultAsync(x => x.Id == id);
             return entity;
         }
