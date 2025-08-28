@@ -1,5 +1,6 @@
 ﻿using Abp.AutoMapper;
 using ArabianCo.Domain.Areas;
+using ArabianCo.Domain.Streets;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ArabianCo.Streets.Dto
 {
-	[AutoMap(typeof(AreaTranslation))]
+	[AutoMap(typeof(StreetTranslation))]
 	public class StreetTranslationDto
 	{
 		/// <summary>
