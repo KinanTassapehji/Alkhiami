@@ -1,5 +1,4 @@
-﻿using Abp.Application.Services.Dto;
-using ArabianCo.Attachments.Dto;
+using Abp.Application.Services.Dto;
 using System;
 
 namespace ArabianCo.MaintenanceRequests.Dto;
@@ -13,8 +12,8 @@ public class LiteMaintenanceRequestDto:EntityDto
     public string Problem { get; set; }
     public bool IsInWarrantyPeriod { get; set; }
     public DateTime CreationTime { get; set; }
-	public string Address { get; set; }
-	public int? CityId { get; set; }
-	public string OtherCity { get; set; }
-	public string CityName { get; set; }
+    public string Street { get; set; }
+    public string Area { get; set; }
+    public string OtherNotes { get; set; }
+    public string CityName { get; set; }
 }
