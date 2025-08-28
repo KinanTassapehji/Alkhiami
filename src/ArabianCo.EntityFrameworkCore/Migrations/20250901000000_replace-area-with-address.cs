@@ -1,6 +1,7 @@
 using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 using ArabianCo.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
 
 #nullable disable
 
