@@ -10,11 +10,21 @@ namespace ArabianCo.ACInstalls.Mapper
 	{
 		public ACInstallMapProfile()
 		{
-			CreateMap<CreateACInstallDto, ACInstall>();
-			CreateMap<UpdateACInstallDto, ACInstall>();
-			CreateMap<ACInstall, LiteACInstallDto>();
-			CreateMap<ACInstall, ACInstallDto>()
-				.ForMember(src => src.Area, destinationMember => destinationMember.Ignore());
-		}
-	}
+                        CreateMap<CreateACInstallDto, ACInstall>()
+                                .ForMember(dest => dest.AddressId, opt => opt.Ignore())
+                                .ForMember(dest => dest.Address, opt => opt.Ignore());
+                        CreateMap<UpdateACInstallDto, ACInstall>()
+                                .ForMember(dest => dest.AddressId, opt => opt.Ignore())
+                                .ForMember(dest => dest.Address, opt => opt.Ignore());
+                        CreateMap<ACInstall, LiteACInstallDto>()
+                                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
+                                .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Address.Area))
+                                .ForMember(dest => dest.OtherNotes, opt => opt.MapFrom(src => src.Address.OtherNotes));
+                        CreateMap<ACInstall, ACInstallDto>()
+                                .ForMember(dest => dest.Street, opt => opt.MapFrom(src => src.Address.Street))
+                                .ForMember(dest => dest.Area, opt => opt.MapFrom(src => src.Address.Area))
+                                .ForMember(dest => dest.OtherNotes, opt => opt.MapFrom(src => src.Address.OtherNotes))
+                                .ForMember(dest => dest.City, opt => opt.MapFrom(src => src.Address.City));
+                }
+        }
 }
