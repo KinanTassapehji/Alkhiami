@@ -5,7 +5,7 @@ using ArabianCo.Authorization.Users;
 using ArabianCo.MultiTenancy;
 using ArabianCo.Domain.Countries;
 using ArabianCo.Domain.Cities;
-using ArabianCo.Domain.Areas;
+using ArabianCo.Domain.Addresses;
 using ArabianCo.Domain.Categories;
 using ArabianCo.Domain.Attachments;
 using ArabianCo.Domain.Brands;
@@ -38,8 +38,7 @@ namespace ArabianCo.EntityFrameworkCore
         public virtual DbSet<CountryTranslation> CountryTranslations {  get; set; }
         public virtual DbSet<City> Cities {  get; set; }
         public virtual DbSet<CityTranslation> CityTranslations {  get; set; }
-        public virtual DbSet<Area> Areas {  get; set; }
-        public virtual DbSet<AreaTranslation> AreaTranslations {  get; set; }
+        public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<Attachment> Attachments {  get; set; }
         public virtual DbSet<Category> Categories {  get; set; }
         public virtual DbSet<CategoryTranslation> CategoryTranslations {  get; set; }

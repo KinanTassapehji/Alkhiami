@@ -1,75 +1,46 @@
-﻿using Abp;
 using Abp.Authorization.Users;
-using Abp.Extensions;
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using static ArabianCo.Enums.Enum;
 
 namespace ArabianCo.ACInstalls.DTO
 {
-	public class CreateACInstallDto : IValidatableObject, IShouldInitialize
-	{
-		public string Email { get; set; }
-		[Required]
-		[StringLength(AbpUserBase.MaxNameLength)]
-		public string FullName { get; set; }
-		[Required]
-		[MaxLength(10)]
-		[MinLength(10)]
-		public string PhoneNumber { get; set; }
-		public string SerialNumber { get; set; }
-		public string ModelNumber { get; set; }
-		public string Note { get; set; }
-		public ACInstallStatus Status { get; set; }
-		public string OtherArea { get; set; }
-		public string OtherCity { get; set; }
-		public int? AreaId { get; set; }
-		public int? CityId { get; set; }
+        public class CreateACInstallDto : IValidatableObject, IShouldInitialize
+        {
+                public string Email { get; set; }
+                [Required]
+                [StringLength(AbpUserBase.MaxNameLength)]
+                public string FullName { get; set; }
+                [Required]
+                [MaxLength(10)]
+                [MinLength(10)]
+                public string PhoneNumber { get; set; }
+                public string SerialNumber { get; set; }
+                public string ModelNumber { get; set; }
+                public string Note { get; set; }
+                public ACInstallStatus Status { get; set; }
 
-		[Required]
-		public int BrandId { get; set; }
-		[Required]
-		public int CategoryId { get; set; }
-		public int? AttachmentId { get; set; }
+                [Required]
+                public int CityId { get; set; }
+                [Required]
+                public string Street { get; set; }
+                [Required]
+                public string Area { get; set; }
+                public string OtherNotes { get; set; }
 
-		public void Initialize()
-		{
-			if (AreaId.HasValue)
-			{
-				CityId = null;
-				OtherArea = null;
-			}
-			else if (CityId.HasValue && !OtherArea.IsNullOrEmpty())
-			{
-				AreaId = null;
-			}
-		}
+                [Required]
+                public int BrandId { get; set; }
+                [Required]
+                public int CategoryId { get; set; }
+                public int? AttachmentId { get; set; }
 
-		public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-		{
-			// Validate Area: require either AreaId or OtherArea
-			bool hasValidArea = AreaId.HasValue || !OtherArea.IsNullOrWhiteSpace();
-			if (!hasValidArea)
-			{
-				yield return new ValidationResult(
-					"Area is Required",
-					new[] { nameof(AreaId), nameof(OtherArea) }
-				);
-			}
+                public void Initialize()
+                {
+                }
 
-			// Validate City: require either CityId or OtherCity
-			bool hasValidCity = CityId.HasValue || !OtherCity.IsNullOrWhiteSpace();
-			if (!hasValidCity)
-			{
-				yield return new ValidationResult(
-					"City is Required",
-					new[] { nameof(CityId), nameof(OtherCity) }
-				);
-			}
-		}
-	}
+                public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+                {
+                        yield break;
+                }
+        }
 }
